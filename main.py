@@ -137,6 +137,49 @@ def while_fun_07(a, b):
         print('\n\nno errors were encountered!')
 
 
+# for loops practice
+def for_fun_basics():
+    for i in range(5):
+        print(i)
+    for x in [1, 2, 3]:
+        print(x)
+    for x in ('a', 'b', 'c'):
+        print(x)
+    for x in [(1, 2), (3, 4), (5, 6)]:
+        print(x)
+    for i, j in [(1, 2), (3, 4), (5, 6)]:
+        print(i, j)
+
+
+def for_fun_break_continue():
+    for i in range(5):
+        if i == 3:
+            continue
+        print(i)
+    for i in range(5):
+        if i == 3:
+            break
+        print(i)
+
+
+def for_fun_search():
+    for i in range(1, 5):
+        print(i)
+        if i % 7 == 0:
+            print('multiple of 7 found')
+            break
+    else:
+        print('No multiples of 7 encountered')
+
+
+def for_fun_indexing(s: str):
+    for i in range(len(s)):
+        print(i, s[i])
+    for i, c in enumerate(s):
+        print(i, c)
+
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print('--- MULTILINE STRINGS ---')
@@ -159,3 +202,7 @@ if __name__ == '__main__':
     while_fun_05()
     while_fun_06()
     while_fun_07(0, 2)
+    for_fun_basics()
+    for_fun_break_continue()
+    for_fun_search()
+    for_fun_indexing("Piotr")
