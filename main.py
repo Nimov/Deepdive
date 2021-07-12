@@ -53,6 +53,70 @@ def math_fun_02(a: int, b: int):
     return a * b
 
 
+# LOOPS
+def while_fun_01(start, end):
+    while start < end:
+        print(start)
+        start += 1
+
+
+def while_fun_02(start, end):
+    while True:
+        print(start)
+        if start >= end:
+            break
+        start += 1
+
+
+def while_fun_03(min_length):
+    while True:
+        name = input('Please enter your name:')
+        if len(name) >= min_length and name.isprintable() and name.isalpha():
+            break
+
+    print('Hello, {0}'.format(name))
+
+
+def while_fun_04(start, stop):
+    while start < 10:
+        start += 1
+        if start % 2:
+            continue
+        print(start)
+
+
+def while_fun_05():
+    l = [1, 2, 3]
+    val = 10
+
+    found = False
+    idx = 0
+    while idx < len(l):
+        if l[idx] == val:
+            found = True
+            break
+        idx += 1
+
+    if not found:
+        l.append(val)
+    print(l)
+
+
+def while_fun_06():
+    l = [1, 2, 3]
+    val = 5
+    idx = 0
+
+    while idx < len(l):
+        if l[idx] == val:
+            break
+        idx += 1
+    else:
+        l.append(val)
+
+    print(l)
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print('--- MULTILINE STRINGS ---')
@@ -67,3 +131,10 @@ if __name__ == '__main__':
     print(math_fun_02(3, 2))
     print(math_fun_02('a', 2))
     print(math_fun_02([1, 2, 3], 2))
+    print('\n--- LOOPS ---')
+    while_fun_01(4, 10)
+    while_fun_02(4, 10)
+#   while_fun_03(3)
+    while_fun_04(2,9)
+    while_fun_05()
+    while_fun_06()
