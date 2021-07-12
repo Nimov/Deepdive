@@ -117,6 +117,26 @@ def while_fun_06():
     print(l)
 
 
+# try/except practiec
+def while_fun_07(a, b):
+    while a < 3:
+        print('-------------')
+        a += 1
+        b -= 1
+        try:
+            res = a / b
+        except ZeroDivisionError:
+            print('{0}, {1} - division by 0'.format(a, b))
+            res = 0
+            break
+        finally:
+            print('{0}, {1} - always executes'.format(a, b))
+
+        print('{0}, {1} - main loop'.format(a, b))
+    else:
+        print('\n\nno errors were encountered!')
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print('--- MULTILINE STRINGS ---')
@@ -138,3 +158,4 @@ if __name__ == '__main__':
     while_fun_04(2,9)
     while_fun_05()
     while_fun_06()
+    while_fun_07(0, 2)
