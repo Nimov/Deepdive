@@ -1,4 +1,7 @@
-# Multiline statements & strings section
+from math import sqrt
+from math import exp
+
+# MULTILINE STRINGS
 def string_fun_01():
     a = '''a multi-line string
     that is actually indented in the second line'''
@@ -11,7 +14,7 @@ that is not indented in the second line'''
     return a
 
 
-# Conditionals
+# CONDITIONALS
 # If statements can be nested
 def if_fun_01(a):
     if a < 5:
@@ -40,6 +43,16 @@ def if_fun_03(a):
     print(res)
 
 
+# FUNCTIONS
+def math_fun_01():
+    print(sqrt(4))
+    print(exp(1))
+
+
+def math_fun_02(a: int, b: int):
+    return a * b
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print('--- MULTILINE STRINGS ---')
@@ -49,3 +62,8 @@ if __name__ == '__main__':
     if_fun_01(15)
     if_fun_02(15)
     if_fun_03(5)
+    print('\n--- FUNCTIONS ---')
+    math_fun_01();
+    print(math_fun_02(3, 2))
+    print(math_fun_02('a', 2))
+    print(math_fun_02([1, 2, 3], 2))
