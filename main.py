@@ -1,6 +1,7 @@
 from math import sqrt
 from math import exp
 
+
 # MULTILINE STRINGS
 def string_fun_01():
     a = '''a multi-line string
@@ -78,7 +79,7 @@ def while_fun_03(min_length):
 
 
 def while_fun_04(start, stop):
-    while start < 10:
+    while start < stop:
         start += 1
         if start % 2:
             continue
@@ -86,38 +87,38 @@ def while_fun_04(start, stop):
 
 
 def while_fun_05():
-    l = [1, 2, 3]
+    lst = [1, 2, 3]
     val = 10
 
     found = False
     idx = 0
-    while idx < len(l):
-        if l[idx] == val:
+    while idx < len(lst):
+        if lst[idx] == val:
             found = True
             break
         idx += 1
 
     if not found:
-        l.append(val)
-    print(l)
+        lst.append(val)
+    print(lst)
 
 
 def while_fun_06():
-    l = [1, 2, 3]
+    lst = [1, 2, 3]
     val = 5
     idx = 0
 
-    while idx < len(l):
-        if l[idx] == val:
+    while idx < len(lst):
+        if lst[idx] == val:
             break
         idx += 1
     else:
-        l.append(val)
+        lst.append(val)
 
-    print(l)
+    print(lst)
 
 
-# try/except practiec
+# try/except practice
 def while_fun_07(a, b):
     while a < 3:
         print('-------------')
@@ -135,6 +136,7 @@ def while_fun_07(a, b):
         print('{0}, {1} - main loop'.format(a, b))
     else:
         print('\n\nno errors were encountered!')
+    return res
 
 
 # for loops practice
@@ -179,7 +181,6 @@ def for_fun_indexing(s: str):
         print(i, c)
 
 
-
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print('--- MULTILINE STRINGS ---')
@@ -190,7 +191,7 @@ if __name__ == '__main__':
     if_fun_02(15)
     if_fun_03(5)
     print('\n--- FUNCTIONS ---')
-    math_fun_01();
+    math_fun_01()
     print(math_fun_02(3, 2))
     print(math_fun_02('a', 2))
     print(math_fun_02([1, 2, 3], 2))
@@ -198,7 +199,7 @@ if __name__ == '__main__':
     while_fun_01(4, 10)
     while_fun_02(4, 10)
 #   while_fun_03(3)
-    while_fun_04(2,9)
+    while_fun_04(2, 9)
     while_fun_05()
     while_fun_06()
     while_fun_07(0, 2)
