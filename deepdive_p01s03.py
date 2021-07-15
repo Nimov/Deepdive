@@ -26,6 +26,25 @@ class B:
         print('B: self: {0}, a: {1}'.format(hex(id(self)), hex(id(self.a))))
 
 
+def square(a):
+    return a ** 2
+
+
+def cube(a):
+    return a ** 3
+
+
+def select_function(fn_id):
+    if fn_id == 1:
+        return square
+    else:
+        return cube
+
+
+def exec_function(fn, n):
+    return fn(n)
+
+
 def demo():
     print('--- REFERENCES ---')
     my_var = 10
@@ -73,3 +92,18 @@ def demo():
     print(hex(id(t)))
     t[0].append(3)
     print(hex(id(t)))
+    print('\n--- OBJECTS ---')
+    a = 10
+    print(type(a))
+    b = int(10)
+    print(type(b))
+#   help(int)
+    c = int('101', base=2)
+    print(c)
+    print(type(square))
+    f = square
+    print(f(2))
+    f = select_function(1)
+    print(f(25))
+    print(select_function(2)(3))
+    exec_function(cube, 3)
