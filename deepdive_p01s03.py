@@ -53,3 +53,23 @@ def demo():
     gc.collect()
     print(ref_count(a_id))
     print(ref_count(b_id))
+    gc.enable()
+    print('\n--- TYPES & VARIABLES---')
+    a = "hello"
+    print(type(a))
+    a = 10
+    print(hex(id(a)))
+    print(type(a))
+    a = 15
+    print(hex(id(a)))   # whoa!
+    my_list = [1, 2, 3]
+    print(type(my_list))
+    print(hex(id(my_list)))
+    my_list.append(4)
+    print(hex(id(my_list)))
+    my_list = my_list + [4]
+    print(hex(id(my_list))) # changed address
+    t = ([1, 2], [3, 4])
+    print(hex(id(t)))
+    t[0].append(3)
+    print(hex(id(t)))
