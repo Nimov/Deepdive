@@ -1,6 +1,8 @@
 import ctypes
 import gc
 import sys
+import time
+import string
 
 
 def ref_count(address: int):
@@ -43,6 +45,37 @@ def select_function(fn_id):
 
 def exec_function(fn, n):
     return fn(n)
+
+
+def compare_using_equals(n):
+    a = 'a long string that is not interned' * 200
+    b = 'a long string that is not interned' * 200
+    for i in range(n):
+        if a == b:
+            pass
+
+
+def compare_using_interning(n):
+    a = sys.intern('a long string that is not interned' * 200)
+    b = sys.intern('a long string that is not interned' * 200)
+    for i in range(n):
+        if a is b:
+            pass
+
+
+def fun_opti1():
+    a = 24 * 60
+    b = (1, 2) * 5
+    c = 'abc' * 3
+    d = 'ab' * 11
+    e = 'the quick brown fox' * 10
+    f = [1, 2] * 5
+
+
+def membership_test(n, container):
+    for i in range(n):
+        if 'p' in container:
+            pass
 
 
 def demo():
@@ -107,3 +140,46 @@ def demo():
     print(f(25))
     print(select_function(2)(3))
     exec_function(cube, 3)
+    print('\n--- OPTIMIZATION ---')
+    # integers from -5 to 256 are singletons!
+    a = 10
+    b = int(10)
+    c = int('10')
+    d = int('1010', 2)
+    print(a is b is c is d)
+    # string interning
+    a1 = 'hello'
+    a2 = 'hello'
+    print(id(a1), id(a2))
+    b1 = '8 hello world, you are cruel'
+    b2 = '8 hello world, you are cruel'
+    print(id(b1), id(b2)) # no intern possibly (?)
+    c1 = sys.intern('hello world')
+    c2 = sys.intern('hello world')
+    c3 = 'hello world'
+    print(id(c1), id(c2), id(c3))
+    start = time.perf_counter()
+    compare_using_equals(3000000)
+    end = time.perf_counter()
+    print('equality: ', end-start)
+    start = time.perf_counter()
+    compare_using_interning(3000000)
+    end = time.perf_counter()
+    print('identity: ', end-start)
+    # looking up constants
+    print(fun_opti1.__code__.co_consts)
+    char_list = list(string.ascii_letters)
+    char_tuple = tuple(string.ascii_letters)
+    char_set = set(string.ascii_letters)
+    start = time.perf_counter()
+    membership_test(10000000, char_list)
+    end = time.perf_counter()
+    print('list membership: ', end - start)
+    start = time.perf_counter()
+    membership_test(10000000, char_tuple)
+    end = time.perf_counter()
+    print('tuple membership: ', end - start)
+    start = time.perf_counter()
+    membership_test(10000000, char_set)
+    end = time.perf_counter()
+    print('set membership: ', end-start)
