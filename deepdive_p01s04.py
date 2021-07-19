@@ -1,4 +1,4 @@
-import fractions
+from fractions import Fraction
 import math
 import sys
 import time
@@ -70,7 +70,7 @@ def demo():
     print(type(10))
     print(int(10.99))
     print(int(True))
-    print(int(fractions.Fraction(22, 7)))
+    print(int(Fraction(22, 7)))
     print(int("101", 2))
     print(bin(10))
     print(oct(5))
@@ -85,5 +85,24 @@ def demo():
     e = rebase_from10(-10, 2)
     print(e)
     print(int(e, 2))
+    print('\n--- RATIONAL NUMBERS ---')
+    print(Fraction(1))
+    print(Fraction(denominator=1, numerator=2))
+    print(Fraction(0.125))
+    print(Fraction('0.125'))
+    print(Fraction('22/7'))
+    x = Fraction(2, 3)
+    y = Fraction(3, 4)
+    print(x+y, x*y, x/y)
+    print(x.numerator, y.denominator)
+    print(Fraction(math.pi))
+    print(Fraction(math.sqrt(2)))
+    a = 0.125
+    b = 0.3
+    print(b.__format__('0.20f'))
+    x = Fraction(b)
+    print(x)
+    print(x.limit_denominator(20))
+
     return
 
